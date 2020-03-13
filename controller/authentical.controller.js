@@ -1,5 +1,5 @@
 var db =require('../db');
-
+var md5 =require('md5');
 module.exports.login = function(req, res){
   res.render('auth/login');
 };
@@ -18,7 +18,11 @@ module.exports.postLogin = function(req, res){
     });
     return;
   }
-  if(user.password!=password){
+
+  var hashPassword = md5(password);
+  console.log(hashPassword);
+
+  if(user.password!==hashPassword){
     res.render('auth/login',{
       errors:[
         'password is not correct'
@@ -27,6 +31,9 @@ module.exports.postLogin = function(req, res){
     });
     return;
   }
-  res.cookie('userId', user.id);
+  res.cookie('userId', user.id ,{
+    signed: true
+  });
+
   res.redirect('/users');
 };
