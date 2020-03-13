@@ -4,12 +4,17 @@ var port =3000;
 // install req.body
 var bodyParser = require('body-parser');
 var userRoute =require('./routes/user.route')
+// cookie bodyParser
+var cookieParser = require('cookie-parser');
 //pug
 app.set('view engine','pug');
 app.set('views','./views')
 //bodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(cookieParser());
+
 
 app.use(express.static('public'));
 
