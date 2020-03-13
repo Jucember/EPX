@@ -15,7 +15,9 @@
     {
       "name": "thinh pham",
       "phone": "01230123",
-      "id": "TCmTZYk-"
+      "id": "TCmTZYk-",
+      "email": "info@coder.com",
+      "password": "123456"
     },
     {
       "name": "",
