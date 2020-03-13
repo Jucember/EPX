@@ -1,3 +1,5 @@
+require('dotenv').config();
+console.log(process.env.SESSION_APP);
 var express = require('express');
 var app = new express();
 var port =3000;
@@ -17,7 +19,7 @@ app.set('views','./views')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.use(cookieParser('asdsddwtw2423525'));
+app.use(cookieParser(process.env.SESSION_APP));
 app.use(express.static('public'));
 
 app.get('/', function(req, res){
