@@ -1,0 +1,2 @@
+middleware "bodyparser" khong the xu li dcd dang multipart/form-data.
+su dung "multer" thay the

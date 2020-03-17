@@ -6,7 +6,7 @@ const adapter = new FileSync('db.json')
 const db = low(adapter)
 
     // tao gia tri default khi file rỗng
-db.defaults({users:[]})
+db.defaults({users:[], sessions:[]})
   .write();
 
 module.exports=db;
