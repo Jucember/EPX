@@ -696,5 +696,30 @@
         "8b26ff09-0aa4-456b-826b-06b5261ea27e": 3
       }
     }
+  ],
+  "transfer": [
+    {
+      "_csrf": "",
+      "accountId": "123",
+      "amount": "500000",
+      "id": "-8NheChI"
+    },
+    {
+      "id": "yka-WJUp",
+      "amount": 6000000,
+      "accountId": "ju"
+    },
+    {
+      "id": "sZbf1ZaF",
+      "amount": 200000,
+      "accountId": "meo",
+      "userId": "TCmTZYk-"
+    },
+    {
+      "id": "zL-meqvp",
+      "amount": 12312321,
+      "accountId": "dog",
+      "userId": "TCmTZYk-"
+    }
   ]
 }

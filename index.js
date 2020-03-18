@@ -5,12 +5,13 @@ var app = new express();
 var port =3000;
 // install req.body
 var bodyParser = require('body-parser');
-
+// token csurf
+var csurf = require('csurf');
 var userRoute =require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
 var productRoute = require('./routes/product.route');
 var cartRoute= require('./routes/cart.route');
-
+var transferRoute = require('./routes/transfer.route')
 var authMiddleware = require('./middlewares/auth.middlewares');
 var sessionMiddleware = require('./middlewares/session.middleware.js')
 // cookie bodyParser
@@ -26,7 +27,8 @@ app.use(cookieParser(process.env.SESSION_APP));
 app.use(express.static('public'));
 
 app.use(sessionMiddleware);
-
+// csrf phai đặt phía sau cookie
+app.use(csurf({ cookie: true }));
 app.get('/', function(req, res){
   res.render('index',{
     name:'AAA'
@@ -41,6 +43,7 @@ app.get('/styles/custom.css',function(req, res){
 
 app.use('/products',productRoute);
 app.use('/cart', cartRoute);
+app.use('/transfer',authMiddleware.requireAuth, transferRoute);
   // login route
 app.use('/auth', authRoute);
 app.listen(port, function(){
