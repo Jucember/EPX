@@ -7,13 +7,18 @@ var port =3000;
 var bodyParser = require('body-parser');
 // token csurf
 var csurf = require('csurf');
+//mongose
+var mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URL);
+
 var userRoute =require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
 var productRoute = require('./routes/product.route');
 var cartRoute= require('./routes/cart.route');
 var transferRoute = require('./routes/transfer.route')
 var authMiddleware = require('./middlewares/auth.middlewares');
-var sessionMiddleware = require('./middlewares/session.middleware.js')
+var sessionMiddleware = require('./middlewares/session.middleware.js');
 // cookie bodyParser
 var cookieParser = require('cookie-parser');
 //pug
@@ -28,7 +33,7 @@ app.use(express.static('public'));
 
 app.use(sessionMiddleware);
 // csrf phai đặt phía sau cookie
-app.use(csurf({ cookie: true }));
+//app.use(csurf({ cookie: true }));
 app.get('/', function(req, res){
   res.render('index',{
     name:'AAA'
